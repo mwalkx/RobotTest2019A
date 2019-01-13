@@ -10,7 +10,8 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.RobotMap;
 import frc.robot.commands.*;
 
 /**
@@ -19,8 +20,9 @@ import frc.robot.commands.*;
 public class DriveTrainA extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  Spark leftSpark = new Spark(0);
-  Spark rtSpark = new Spark(1);
+  Spark leftSpark = new Spark(RobotMap.leftMotor);
+  Spark rtSpark = new Spark(RobotMap.rightMotor);
+  int testNum = 5;
   DifferentialDrive driveTrain = new DifferentialDrive(leftSpark, rtSpark);
   
 
@@ -35,5 +37,10 @@ public class DriveTrainA extends Subsystem {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
     setDefaultCommand(new DriveIt());
+  }
+
+  public void log() {
+    // log data
+    SmartDashboard.putNumber("Test Number", testNum);
   }
 }
