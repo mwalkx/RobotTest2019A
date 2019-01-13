@@ -39,6 +39,10 @@ public class DriveTrainA extends Subsystem {
     setDefaultCommand(new DriveIt());
   }
 
+  public void driveStop() {
+    driveTrain.tankDrive(0, 0);
+  }
+
   public void log() {
     // log data
     SmartDashboard.putNumber("Test Number", testNum);

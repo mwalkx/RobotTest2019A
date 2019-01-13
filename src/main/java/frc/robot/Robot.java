@@ -29,7 +29,7 @@ public class Robot extends TimedRobot {
 
   // instantiate all of the subsystems
   public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
-  public static DriveTrainA driveTrain  = new DriveTrainA();
+  public static DriveTrainA m_driveTrain  = new DriveTrainA();
   public static OI m_oi;
 
   Command m_autonomousCommand;
