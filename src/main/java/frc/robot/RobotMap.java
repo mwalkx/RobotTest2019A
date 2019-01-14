@@ -25,4 +25,11 @@ public class RobotMap {
   // public static int rangefinderModule = 1;
   public static int leftMotor = 0;
   public static int rightMotor = 1;
+  public static int sol1 = 0;
+  public static int sol2 = 1;
+  public static int sol3 = 2;
+
+  public static boolean on = true;
+  public static boolean off = false;
+  
 }

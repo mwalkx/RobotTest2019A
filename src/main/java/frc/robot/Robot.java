@@ -12,11 +12,11 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.cameraserver.*;
 import frc.robot.commands.ExampleCommand;
-
-import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.Actuator;
 import frc.robot.subsystems.DriveTrainA;
-
+import frc.robot.subsystems.ExampleSubsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -30,6 +30,8 @@ public class Robot extends TimedRobot {
   // instantiate all of the subsystems
   public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
   public static DriveTrainA m_driveTrain  = new DriveTrainA();
+  public static Actuator m_actuator = new Actuator();
+
   public static OI m_oi;
 
   Command m_autonomousCommand;
@@ -45,6 +47,8 @@ public class Robot extends TimedRobot {
     m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
+    // Start cameraserver for sending to DriverStation
+    CameraServer.getInstance().startAutomaticCapture();
   }
 
   /**
