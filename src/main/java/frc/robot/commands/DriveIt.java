@@ -9,6 +9,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import frc.robot.OI;
 
 public class DriveIt extends Command {
   public DriveIt() {
@@ -25,7 +26,8 @@ public class DriveIt extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.m_driveTrain.driveJoystick(.5, .5);
+    //Robot.m_driveTrain.driveJoystick(.5, .5);
+    Robot.m_driveTrain.driveJoystick(OI.getXBXL(), OI.getXBXR());
 
   }
 

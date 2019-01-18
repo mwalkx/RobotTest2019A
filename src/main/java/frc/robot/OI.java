@@ -9,6 +9,7 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.buttons.*;
 
 import frc.robot.commands.*;
@@ -47,12 +48,16 @@ public class OI {
   // button.whenReleased(new ExampleCommand());
 
   //Joystick joystick0 = new Joystick(0);
-  XboxController xb1 = new XboxController(0);
+  static XboxController xb1 = new XboxController(0);
 
-  Button buttonA = new JoystickButton(xb1, 1);
-  Button buttonB = new JoystickButton(xb1, 2);
-  Button leftBumper = new JoystickButton(xb1, 5);
-  Button rightBumper = new JoystickButton(xb1, 6);
+//  Button buttonA = new JoystickButton(xb1, 1);
+  
+  static Button buttonB = new JoystickButton(xb1, 2);
+  static Button leftBumper = new JoystickButton(xb1, 5);
+  static Button rightBumper = new JoystickButton(xb1, 6);
+
+
+  
 
   // Button jbutton1 = new JoystickButton(joystick0, 1);
 
@@ -60,9 +65,22 @@ public class OI {
     // constructor to set up buttons and actions
     // jbutton1.whenPressed(new DriveIt());
 
-    buttonA.whenPressed(new OpenActuator(true));
+    // buttonA.whenPressed(new OpenActuator(true));
+    if(xb1.getAButtonPressed()) {
+      new OpenActuator(true);
+    }
+  
     buttonB.whenPressed(new OpenActuator(false));
+    
 
 
+  }
+
+  public static double getXBXL() {
+    return xb1.getX(Hand.kLeft);
+  }
+
+  public static double getXBXR() {
+    return xb1.getX(Hand.kRight);
   }
 }
