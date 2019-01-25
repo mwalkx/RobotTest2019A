@@ -7,6 +7,8 @@
 
 package frc.robot;
 
+import com.analog.adis16448.frc.ADIS16448_IMU;
+
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -31,6 +33,9 @@ public class Robot extends TimedRobot {
   public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
   public static DriveTrainA m_driveTrain  = new DriveTrainA();
   public static Actuator m_actuator = new Actuator();
+
+  //  ADIS16448 IMU
+  public static final ADIS16448_IMU imu = new ADIS16448_IMU();
 
   public static OI m_oi;
 
@@ -61,6 +66,21 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+    // example from github
+    SmartDashboard.putNumber("Gyro-X", imu.getAngleX());
+    SmartDashboard.putNumber("Gyro-Y", imu.getAngleY());
+    SmartDashboard.putNumber("Gyro-Z", imu.getAngleZ());
+    
+    SmartDashboard.putNumber("Accel-X", imu.getAccelX());
+    SmartDashboard.putNumber("Accel-Y", imu.getAccelY());
+    SmartDashboard.putNumber("Accel-Z", imu.getAccelZ());
+    
+    SmartDashboard.putNumber("Pitch", imu.getPitch());
+    SmartDashboard.putNumber("Roll", imu.getRoll());
+    SmartDashboard.putNumber("Yaw", imu.getYaw());
+    
+    SmartDashboard.putNumber("Pressure: ", imu.getBarometricPressure());
+    SmartDashboard.putNumber("Temperature: ", imu.getTemperature()); 
   }
 
   /**
